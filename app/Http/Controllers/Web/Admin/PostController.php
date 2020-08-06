@@ -36,8 +36,6 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
-
         $postData = $this->validateRequest();
         $postData['slug'] = $this->createSlug($this->checkSlug($request->title));
         $postData['user_id'] = auth()->user()->id;
