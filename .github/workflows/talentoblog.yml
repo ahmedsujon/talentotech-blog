@@ -14,5 +14,5 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@3.1.0
         with:
           ftp-server: ftp://ftp.talentotech.com/public-html
-          ftp-username: ${{ secrets.TREATLOVER_USERNAME }}
-          ftp-password: ${{ secrets.TREATLOVER_PASSWORD }}
+          ftp-username: ${{ secrets.USERNAME }}
+          ftp-password: ${{ secrets.PASSWORD }}
