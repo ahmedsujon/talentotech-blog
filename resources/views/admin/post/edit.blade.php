@@ -40,7 +40,6 @@
                     @endforeach
                 </select>
             </div>
-
             <div class="form-group col-md-6">
                 <label for="image">Upload Image</label>
                 <input class="form-control-file" id="image" name="image" type="file" aria-describedby="fileHelp"><small class="form-text text-muted" id="fileHelp">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
@@ -50,6 +49,21 @@
                     <img src="{{asset('storage/uploads/PostImage/' . $post->image)}}" alt="Image">
                 </div>
             </div>
+
+        <div class="col-md-6 col-sm-6 d-flex flex-wrap">
+            @foreach($tags as $tag)
+            <div class="custom-control custom-checkbox" style="margin-right: 20px">
+                <input type="checkbox" class="custom-control-input" name="tags[]" id="tag{{ $tag->id }}" value="{{ $tag->id }}"
+
+                @foreach($post->tags as $t)
+                    @if($tag->id == $t->id) checked
+                    @endif
+                @endforeach
+                >
+                <label for="tag{{ $tag->id }}" class="custom-control-label">{{ $tag->name }}</label>
+            </div>
+            @endforeach
+        </div>
 
             <div class="form-group col-md-12">
                 <label for="description">Example textarea</label>
@@ -62,4 +76,19 @@
       </div>
     </div>
   </div>
+@endsection
+
+@section('style')
+  <link rel="stylesheet" href="{{ asset('admin/css/summernote-bs4.min.css') }}">
+@endsection
+
+@section('script')
+    <script type="text/javascript" src="{{ asset('admin/js/summernote-bs4.min.js') }}"></script>
+    <script>
+        $('#description').summernote({
+          placeholder: 'Hello Bootstrap 4',
+          tabsize: 2,
+          height: 300
+        });
+      </script>
 @endsection

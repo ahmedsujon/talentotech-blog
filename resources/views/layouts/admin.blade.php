@@ -21,6 +21,7 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/main.css') }}">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    @yield('style')
   </head>
   <body class="app sidebar-mini">
     <!-- Navbar-->
@@ -134,6 +135,7 @@
     <script type="text/javascript" src="{{ asset('admin/js/plugins/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('admin/js/plugins/bootstrap-notify.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('admin/js/plugins/dataTables.bootstrap.min.js') }}"></script>
+    @yield('script')
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <!-- Google analytics script-->
     <script type="text/javascript">

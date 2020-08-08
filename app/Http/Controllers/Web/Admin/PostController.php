@@ -18,7 +18,7 @@ class PostController extends Controller
     {
         $data = array(
 
-            'posts' => Post::with(['categories', 'tags'])->orderBy('id', 'desc')->get()
+            'posts' => Post::with(['category', 'tags'])->orderBy('id', 'desc')->get()
 
         );
         return view('admin.post.index', $data);
@@ -57,14 +57,15 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        //
+        return view('admin.post.show', compact('post'));
     }
 
     public function edit(Post $post)
     {
         $data = array(
-            'post' => $post,
-            'categories' =>  Category::orderBy('name', 'asc')->get()
+            'categories' => Category::all(),
+            'tags' => Tag::all(),
+            'post' => $post
         );
         return view('admin.post.edit', $data);
     }
@@ -72,6 +73,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
 
+        // dd($request->all());
         $postData = $this->validateRequest();
         $postData['slug'] = $this->createSlug($this->checkSlug($request->title));
 
@@ -80,6 +82,7 @@ class PostController extends Controller
         }
 
         if ($post->update($postData)) {
+            $post->tags()->sync($request->tags);
             Session::flash('response', array('type' => 'success', 'message' => 'Post Updated successfully!'));
         } else {
             Session::flash('response', array('type' => 'error', 'message' => 'Something Went wrong!'));
@@ -100,7 +103,7 @@ class PostController extends Controller
     private function validateRequest()
     {
         return request()->validate([
-            'title' => 'required|unique:posts',
+            'title' => 'required',
             'image' => 'required|image',
             'description' => 'required',
             'category_id' => 'required',
@@ -112,7 +115,7 @@ class PostController extends Controller
         $timestemp = time();
         $imageName = $timestemp . '.' . $image->getClientOriginalExtension();
         $path = storage_path() . '/app/public/uploads/PostImage/' . $imageName;
-        Image::make($image)->fit(200, 200)->save($path);
+        Image::make($image)->fit(500, 500)->save($path);
         return $imageName;
     }
     private function createSlug($title)

@@ -16,7 +16,7 @@ class Post extends Model
         'published_at',
     ];
 
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }

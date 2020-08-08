@@ -25,6 +25,7 @@
                   <th>Image</th>
                   <th>Title</th>
                   <th>Category</th>
+                  <th>Tags</th>
                   <th>Author</th>
                   <th>Action</th>
                 </tr>
@@ -35,9 +36,21 @@
                   <td>{{ $index }}</td>
                   <td><img style="height:37px; border-radius:20px;" src="{{asset('storage/uploads/PostImage/' . $post->image)}}"></td>
                   <td>{{ $post->title }}</td>
-                  <td>{{ $post->category_id }}</td>
+                  <td>
+                    @if($post->category_id)
+                    {{ $post->category->name }}
+                    @else
+                    {{ _('No category found') }}
+                    @endif
+                </td>
+                  <td>
+                      @foreach($post->tags as $tag)
+                        <span class="badge badge-primary">{{ $tag->name }}</span>
+                      @endforeach
+                  </td>
                   <td>{{ $post->user->name }}</td>
                   <td>
+                    <a href="{{ route('post.show', $post->id) }}" class="btn btn-success btn-sm mr-3">Show</a>
                     <a href="{{ route('post.edit', $post->id) }}" class="btn btn-primary btn-sm mr-3">Edit</a>
                     <form action="{{ route('post.destroy', $post->id) }}" method="POST"
                         style="display: inline-block;">
