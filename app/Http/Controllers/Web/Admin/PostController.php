@@ -115,7 +115,7 @@ class PostController extends Controller
         $timestemp = time();
         $imageName = $timestemp . '.' . $image->getClientOriginalExtension();
         $path = storage_path() . '/app/public/uploads/PostImage/' . $imageName;
-        Image::make($image)->fit(500, 500)->save($path);
+        Image::make($image)->save($path);
         return $imageName;
     }
     private function createSlug($title)

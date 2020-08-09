@@ -3,12 +3,18 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
+
+// Fontend Routes
+Route::prefix('/')->namespace('Web\Fontend')->group(function () {
+    Route::get('/', 'HomeController@home')->name('website');
+    Route::get('/about', 'HomeController@about')->name('about');
+    Route::get('/category', 'HomeController@category')->name('category');
+    Route::get('/contact', 'HomeController@contact')->name('contact');
+    Route::get('/singlepost/{slug}', 'HomeController@post')->name('singlepost');
 });
 
-
-Route::prefix('/')->namespace('Web\Admin')->group(function () {
+// Backend Routes
+Route::prefix('/admin')->namespace('Web\Admin')->group(function () {
     Route::resource('category', 'CategoryController');
     Route::resource('tag', 'TagController');
     Route::resource('post', 'PostController');
