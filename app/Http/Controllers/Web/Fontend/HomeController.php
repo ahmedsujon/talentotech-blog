@@ -11,12 +11,25 @@ class HomeController extends Controller
 
     public function home()
     {
-        $data = array(
+        $posts = Post::with('category', 'user')->orderBy('created_at', 'DESC')->take(5)->get();
+        $first2post = $posts->splice(0, 2);
+        $middle1posts = $posts->splice(0, 1);
+        $last2posts = $posts->splice(0);
 
-            'posts' => Post::orderBy('created_at', 'DESC')->take(5)->get(),
-            'recentPosts' => Post::with('category', 'user')->orderBy('created_at', 'DESC')->paginate(9),
-        );
-        return view('welcome', $data);
+        $footerposts = Post::with('category', 'user')->inRandomOrder()->limit(4)->get();
+        $footerfirst1post = $footerposts->splice(0, 1);
+        $footermiddle2posts = $footerposts->splice(0, 2);
+        $footerlast1posts = $footerposts->splice(0, 1);
+
+        $recentPosts = Post::with('category', 'user')->orderBy('created_at', 'DESC')->paginate(9);
+        return view('welcome', compact(['posts','recentPosts', 'first2post', 'middle1posts', 'last2posts','footerposts', 'footerfirst1post', 'footermiddle2posts', 'footerlast1posts']));
+
+        // $data = array(
+
+        //     'posts' => Post::orderBy('created_at', 'DESC')->take(5)->get(),
+        //     'recentPosts' => Post::with('category', 'user')->orderBy('created_at', 'DESC')->paginate(9),
+        // );
+        // return view('welcome', $data);
     }
 
     public function about()
