@@ -39,9 +39,15 @@ class HomeController extends Controller
         return view('app.about');
     }
 
-    public function category()
+    public function category($slug)
     {
-        return view('app.category');
+        $category = Category::where('slug', $slug)->first();
+        if($category){
+            return view('app.category', compact('category'));
+        }else{
+            return redirect()->route('website');
+        }
+
     }
 
     public function contact()
@@ -56,7 +62,7 @@ class HomeController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
         if($posts){
-            return view('app.singlepost', compact('posts', 'siderbarposts', 'categories', 'tags'));
+            return view('app.singlepost', compact(['posts', 'siderbarposts', 'categories', 'tags']));
         }else{
             return redirect('/');
         }

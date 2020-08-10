@@ -188,14 +188,14 @@
             <h3 class="heading">Popular Posts</h3>
             <div class="post-entry-sidebar">
               <ul>
-                  @foreach($siderbarposts as $post)
+                  @foreach($siderbarposts as $siderbarpost)
                 <li>
                   <a href="">
-                    <img src="{{asset('storage/uploads/PostImage/' . $posts->image)}}" alt="Image placeholder" class="mr-4">
+                    <img src="{{asset('storage/uploads/PostImage/' . $siderbarpost->image)}}" alt="Image placeholder" class="mr-4">
                     <div class="text">
-                      <h4>{{ $post->title }}</h4>
+                      <h4>{{ $siderbarpost->title }}</h4>
                       <div class="post-meta">
-                        <span class="mr-2">{{ $post->created_at->format('M d, Y') }} </span>
+                        <span class="mr-2">{{ $siderbarpost->created_at->format('M d, Y') }} </span>
                       </div>
                     </div>
                   </a>

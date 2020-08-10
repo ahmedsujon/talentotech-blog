@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('/')->namespace('Web\Fontend')->group(function () {
     Route::get('/', 'HomeController@home')->name('website');
     Route::get('/about', 'HomeController@about')->name('about');
-    Route::get('/category', 'HomeController@category')->name('category');
+    Route::get('/category/{slug}', 'HomeController@category')->name('category');
     Route::get('/contact', 'HomeController@contact')->name('contact');
     Route::get('/singlepost/{slug}', 'HomeController@post')->name('singlepost');
 });
