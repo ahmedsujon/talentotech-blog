@@ -42,8 +42,9 @@ class HomeController extends Controller
     public function category($slug)
     {
         $category = Category::where('slug', $slug)->first();
+        $posts = Post::where('category_id', $category->id)->paginate(9);
         if($category){
-            return view('app.category', compact('category'));
+            return view('app.category', compact(['category', 'posts']));
         }else{
             return redirect()->route('website');
         }
