@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Web\Fontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -49,11 +51,12 @@ class HomeController extends Controller
 
     public function post($slug)
     {
-        $data = array(
-            'posts' => Post::with('category', 'user')->where('slug', $slug)->first(),
-        );
-        if($data){
-            return view('app.singlepost', $data);
+        $posts = Post::with('category', 'user')->where('slug', $slug)->first();
+        $siderbarposts = Post::with('category', 'user')->inRandomOrder()->limit(4)->get();
+        $categories = Category::all();
+        $tags = Tag::all();
+        if($posts){
+            return view('app.singlepost', compact('posts', 'siderbarposts', 'categories', 'tags'));
         }else{
             return redirect('/');
         }
