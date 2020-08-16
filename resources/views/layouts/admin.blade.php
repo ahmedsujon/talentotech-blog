@@ -154,6 +154,8 @@
             $("#DataTable").DataTable();
         });
     </script>
+
+    
       @if(Session::has('response'))
       <script>
           var toastData = {
@@ -175,6 +177,8 @@
           );
       </script>
       @endif
+
+
     <script type="text/javascript">
       var data = {
       	labels: ["January", "February", "March", "April", "May"],

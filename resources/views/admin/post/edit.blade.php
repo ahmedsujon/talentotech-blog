@@ -25,7 +25,7 @@
             <input class="form-control form-control @error('title') is-invalid @enderror" value="{{ $post->title }}" type="text" name="title" placeholder="Post title" autofocus>
             @error('title')
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
+                    <strong>{{ $message }}</strong> 
                 </span>
             @enderror
           </div>

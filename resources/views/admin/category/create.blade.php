@@ -24,14 +24,14 @@
             <input class="form-control form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" type="text" name="name" placeholder="Category name" autofocus>
             @error('name')
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
+                    <strong>{{ $message }}</strong> 
                 </span>
             @enderror
           </div>
             <div class="form-group col-md-4">
                 <label for="exampleTextarea">Example textarea</label>
                 <textarea class="form-control" id="exampleTextarea" name="description" rows="3"></textarea>
-              </div>
+            </div>
           <div class="form-group col-md-4 align-self-end">
             <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Submit</button>
           </div>

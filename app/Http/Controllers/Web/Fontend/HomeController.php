@@ -60,10 +60,18 @@ class HomeController extends Controller
     {
         $posts = Post::with('category', 'user')->where('slug', $slug)->first();
         $siderbarposts = Post::with('category', 'user')->inRandomOrder()->limit(4)->get();
+
+        // More related post in single post page
+        $relatedposts = Post::orderBy('category_id', 'desc')->inRandomOrder()->take(4)->get();
+        $relatedfirst1posts = $relatedposts->splice(0, 1);
+        $relatedmiddle2posts = $relatedposts->splice(0, 2);
+        $relatedlast1posts = $relatedposts->splice(0, 1);
+
+
         $categories = Category::all();
         $tags = Tag::all();
         if($posts){
-            return view('app.singlepost', compact(['posts', 'siderbarposts', 'categories', 'tags']));
+            return view('app.singlepost', compact(['posts', 'siderbarposts', 'categories', 'tags', 'relatedposts', 'relatedfirst1posts', 'relatedmiddle2posts', 'relatedlast1posts']));
         }else{
             return redirect('/');
         }

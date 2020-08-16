@@ -52,6 +52,7 @@
                   <td>
                     <a href="{{ route('post.show', $post->id) }}" class="btn btn-success btn-sm mr-3">Show</a>
                     <a href="{{ route('post.edit', $post->id) }}" class="btn btn-primary btn-sm mr-3">Edit</a>
+
                     <form action="{{ route('post.destroy', $post->id) }}" method="POST"
                         style="display: inline-block;">
                         @csrf
