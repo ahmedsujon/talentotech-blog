@@ -18,7 +18,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Main CSS-->
-  <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/main.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('administration/css/main.css') }}">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     @yield('style')
@@ -116,7 +116,8 @@
             <li><a class="treeview-item" href="page-error.html"><i class="icon fa fa-circle-o"></i> Error Page</a></li>
           </ul>
         </li>
-        <li><a class="app-menu__item" href="{{ route('users.index') }}"><i class="app-menu__icon fa fa-user"></i><span class="app-menu__label">Users</span></a></li>
+       <li><a class="app-menu__item" href="{{ route('users.index') }}"><i class="app-menu__icon fa fa-user"></i><span class="app-menu__label">Users</span></a></li>
+        <li><a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">Settings</span></a></li>
        <li><a class="treeview-item" target="_blank" href="{{ route('website') }}"><i class="icon fa fa-circle-o"></i> View Website</a></li>
       </ul>
     </aside>
@@ -124,18 +125,20 @@
       @yield('content')
     </main>
     <!-- Essential javascripts for application to work-->
-    <script src="{{ asset('admin/js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('admin/js/popper.min.js') }}"></script>
-    <script src="{{ asset('admin/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('admin/js/main.js') }}"></script>
+    <script src="{{ asset('administration/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('administration/js/popper.min.js') }}"></script>
+    <script src="{{ asset('administration/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('administration/js/main.js') }}"></script>
     <!-- The javascript plugin to display page loading on top-->
-    <script src="{{ asset('admin/js/plugins/pace.min.js') }}"></script>
+    <script src="{{ asset('administration/js/plugins/pace.min.js') }}"></script>
     <!-- Page specific javascripts-->
-    <script type="text/javascript" src="{{ asset('admin/js/plugins/chart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administration/js/plugins/chart.js') }}"></script>
 
-    <script type="text/javascript" src="{{ asset('admin/js/plugins/jquery.dataTables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/plugins/bootstrap-notify.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/plugins/dataTables.bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administration/js/plugins/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administration/js/plugins/bootstrap-notify.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administration/js/plugins/dataTables.bootstrap.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.1/jquery-ui.min.js"></script>
     @yield('script')
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
     <!-- Google analytics script-->
@@ -155,7 +158,7 @@
         });
     </script>
 
-    
+
       @if(Session::has('response'))
       <script>
           var toastData = {

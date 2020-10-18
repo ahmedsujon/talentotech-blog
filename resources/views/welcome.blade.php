@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row align-items-stretch retro-layout-2">
         <div class="col-md-4">
-            @foreach($first2post as $post)
+        @foreach($first2post as $post)
           <a href="{{ route('singlepost', ['slug' => $post->slug]) }}" class="h-entry mb-30 v-height gradient" style="background-image: url('{{asset('storage/uploads/PostImage/' . $post->image)}}');">
             <div class="text">
               <h2>{{ $post->title }}</h2>
@@ -61,7 +61,7 @@
               <span class="d-inline-block mt-1">By <a href="#">{{ $post->user->name }}</a></span>
               <span>&nbsp;-&nbsp; {{ $post->created_at->format('M d, Y') }}</span>
             </div>
-            <p>{{ Str::limit($post->description, 200) }}</p>
+            <p>{!! Str::limit($post->description, 200) !!}</p>
               <p><a href="{{ route('singlepost', ['slug' => $post->slug]) }}">Read More</a></p>
             </div>
           </div>

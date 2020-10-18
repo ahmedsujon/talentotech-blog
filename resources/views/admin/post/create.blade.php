@@ -28,7 +28,6 @@
                 </span>
             @enderror
           </div>
-
             <div class="col-md-6 col-sm-6">
                 <label for="status">Category</label>
                 <select name="category_id" id="category_id" class="form-control select2" required>
@@ -44,8 +43,6 @@
                 <label for="image">Upload Image</label>
                 <input class="form-control-file" id="image" name="image" type="file" aria-describedby="fileHelp"><small class="form-text text-muted" id="fileHelp">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
             </div>
-
-
             <div class="form-group col-md-12">
                 <label for="tag">Chose Post Tags</label>
                 <div class="d-flex flex-wrap">

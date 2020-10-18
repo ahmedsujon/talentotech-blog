@@ -25,7 +25,7 @@
             <input class="form-control form-control @error('title') is-invalid @enderror" value="{{ $post->title }}" type="text" name="title" placeholder="Post title" autofocus>
             @error('title')
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong> 
+                    <strong>{{ $message }}</strong>
                 </span>
             @enderror
           </div>
@@ -54,12 +54,10 @@
             @foreach($tags as $tag)
             <div class="custom-control custom-checkbox" style="margin-right: 20px">
                 <input type="checkbox" class="custom-control-input" name="tags[]" id="tag{{ $tag->id }}" value="{{ $tag->id }}"
-
                 @foreach($post->tags as $t)
                     @if($tag->id == $t->id) checked
                     @endif
-                @endforeach
-                >
+                @endforeach >
                 <label for="tag{{ $tag->id }}" class="custom-control-label">{{ $tag->name }}</label>
             </div>
             @endforeach

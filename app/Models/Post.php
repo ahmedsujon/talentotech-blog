@@ -4,9 +4,11 @@ namespace App\Models;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Laravelista\Comments\Commentable;
 
 class Post extends Model
 {
+    use Commentable;
 
     protected $fillable = [
         'title', 'slug', 'image', 'description', 'user_id', 'category_id', 'published_at',

@@ -47,7 +47,6 @@
                 <th style="height:100px;">Image</th>
                 <td><img style="    height: 135px; border-radius: 20px;" src="{{asset('storage/uploads/PostImage/' . $post->image)}}"></td>
             </tr>
-
             </tbody>
           </table>
     </div>

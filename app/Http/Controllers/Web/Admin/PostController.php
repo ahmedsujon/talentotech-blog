@@ -52,7 +52,6 @@ class PostController extends Controller
             Session::flash('response', array('type' => 'error', 'message' => 'Something Went wrong!'));
         }
         return redirect()->route('post.index');
-
     }
 
     public function show(Post $post)
@@ -73,7 +72,6 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
 
-        // dd($request->all());
         $postData = $this->validateRequest();
         $postData['slug'] = $this->createSlug($this->checkSlug($request->title));
 

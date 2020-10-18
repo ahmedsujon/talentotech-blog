@@ -22,9 +22,13 @@ Route::prefix('/admin')->namespace('Web\Admin')->group(function () {
     Route::get('profile', 'UserController@profile')->name('user.profile');
     Route::post('profile-update', 'UserController@profileUpdate')->name('user.profile.update');
 
+
+    Route::get('dropdownlist','SearchController@index');
+    Route::get('get-state-list','SearchController@getStateList');
+    Route::get('get-city-list','SearchController@getCityList');
+
 });
 
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
